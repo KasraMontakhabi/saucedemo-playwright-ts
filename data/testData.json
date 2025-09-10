@@ -2,6 +2,10 @@
     {
         "username": "standard_user",
         "password": "secret_sauce",
-        "productName": "Sauce Labs Fleece Jacket"
+        "testFirstName": "John",
+        "testLastName": "Doe",
+        "testZipCode": "12345",
+        "productName": "Sauce Labs Fleece Jacket",
+        "sortOption": "Name (Z to A)"
     }
 ]
