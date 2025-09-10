@@ -1,0 +1,13 @@
+[
+    {
+        "username": "standard_user",
+        "password": "secret_sauce",
+        "testFirstName": "John",
+        "testLastName": "Doe",
+        "testZipCode": "12345",
+        "firstProductName": "Sauce Labs Fleece Jacket",
+        "secondProductName": "Sauce Labs Backpack",
+        "thirdProductName": "Sauce Labs Onesie",
+        "sortOption": "Name (Z to A)"
+    }
+]
