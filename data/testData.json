@@ -5,7 +5,9 @@
         "testFirstName": "John",
         "testLastName": "Doe",
         "testZipCode": "12345",
-        "productName": "Sauce Labs Fleece Jacket",
+        "firstProductName": "Sauce Labs Fleece Jacket",
+        "secondProductName": "Sauce Labs Backpack",
+        "thirdProductName": "Sauce Labs Onesie",
         "sortOption": "Name (Z to A)"
     }
 ]
