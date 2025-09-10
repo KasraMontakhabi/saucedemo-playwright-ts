@@ -1,4 +1,4 @@
-import { Locator, Page } from "playwright";
+import { Locator, Page } from "@playwright/test";
 
 class InventoryPage {
 
@@ -15,14 +15,14 @@ class InventoryPage {
     }
 
     async addProductToCart(productName: string) {
-        this.products.filter({ hasText: productName })
+        await this.products.filter({ hasText: productName })
         .first()
         .filter({ has: this.addToCartButton })
         .click();
     }
 
     async getProductPrice(productName: string){
-        return this.products.filter({ hasText: productName })
+        return await this.products.filter({ hasText: productName })
         .first()
         .filter({ has: this.itemPrice })
         .innerText();
