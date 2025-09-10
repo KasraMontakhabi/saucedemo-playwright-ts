@@ -49,3 +49,5 @@ class CartPage {
         await this.checkoutButton.click();
     }
 }
+
+export default CartPage;
