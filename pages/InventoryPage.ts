@@ -28,6 +28,22 @@ class InventoryPage {
 
         return text.replace('$', '').trim();
     }
+
+    async removeProductFromCart(productName: string) {
+        await this.products
+            .filter({ hasText: productName })
+            .first()
+            .getByRole('button', { name: 'Remove' })
+            .click();
+    }
+
+    async goToProductDetails(productName: string) {
+        await this.products
+            .filter({ hasText: productName })
+            .first()
+            .getByTestId('inventory-item-name')
+            .click();
+    }
 }
 
 export default InventoryPage;
