@@ -28,10 +28,18 @@ class Header {
         return await this.pageTitle.innerText();
     }
 
+    async getShoppingCartItemCount() {
+        const badge = this.page.getByTestId('shopping-cart-badge');
+        if (await badge.isVisible()) {
+            return await badge.innerText();
+        }
+        return '0';
+    }
+
     async sortProducts(sortOption: string) {
         await this.productSortDropdown.selectOption(sortOption);
     }
-    
+
     async backToProducts() {
         await this.backToProductsButton.click();
     }

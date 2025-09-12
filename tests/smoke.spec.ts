@@ -54,21 +54,49 @@ test.describe('@smoke SMOKE: Authenticated flows', () => {
 
         await inventory.addProductToCart(data.secondProductName);
 
-        const badge = page.getByTestId('shopping-cart-badge');
-        await expect(badge).toHaveText('1');
+        const shoppingCartBadgeCount = await header.getShoppingCartItemCount();
+        expect(shoppingCartBadgeCount).toBe('1');
 
-        // Go to cart and verify item
         await header.goToCart();
         await expect(page).toHaveURL(/.*cart\.html/);
         const count = await cart.getItemsCount();
         expect(count).toBe(1);
         expect(await cart.getProductInCart(data.secondProductName)).toContain(data.secondProductName);
 
-        // Remove item and verify empty
         await cart.removeProductFromCart(data.secondProductName);
         const countAfterRemovingItem = await cart.getItemsCount();
         expect(countAfterRemovingItem).toBe(0);
-        await expect(badge).not.toBeVisible();
+    });
+
+    test('basic checkout flow (1 item) completes and resets cart', async ({ page }) => {
+        const header = new Header(page);
+        const checkout = new CheckoutPage(page);
+        const cart = new CartPage(page);
+        const inventory = new InventoryPage(page);
+
+        // Add product then go to cart
+        await inventory.addProductToCart(data.firstProductName);
+        await header.goToCart();
+        await expect(page).toHaveURL(/.*cart\.html/);
+
+        // Checkout → Info → Overview → Finish
+        await cart.checkout();
+        await checkout.enterCheckoutInformation(data.testFirstName, data.testLastName, data.testZipCode);
+
+        // Overview assertions (item present; totals are displayed)
+        const count = await cart.getItemsCount();
+        expect(count).toBe(1);
+        await expect(checkout.itemTotalAmount).toBeVisible();
+        await expect(checkout.taxAmount).toBeVisible();
+        await expect(checkout.totalAmount).toBeVisible();
+
+        await checkout.finishCheckout();
+        await expect(checkout.completionMessage).toBeVisible();
+
+        // Back Home resets state; cart should be empty
+        await checkout.backToHome();
+        const shoppingCartBadgeCount = await header.getShoppingCartItemCount();
+        expect(shoppingCartBadgeCount).toBe('0');
     });
 
     
