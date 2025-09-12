@@ -99,6 +99,34 @@ test.describe('@smoke SMOKE: Authenticated flows', () => {
         expect(shoppingCartBadgeCount).toBe('0');
     });
 
+    test('sort dropdown changes list order (Name Z→A)', async ({ page }) => {
+        const header = new Header(page);
+        const inventory = new InventoryPage(page);
+
+        await header.sortProducts(data.sortOption); 
+
+        // Assert first few names are in Z-A order
+        const names = await inventory.itemName.allInnerTexts();
+        const normalized = names.map((n) => n.trim());
+        const sortedDesc = [...normalized].sort((a, b) =>
+            b.localeCompare(a, undefined, { sensitivity: 'base' })
+        );
+        expect(normalized.slice(0, 5)).toEqual(sortedDesc.slice(0, 5));
+    });
+
+    test('logout ends session', async ({ page }) => {
+        const header = new Header(page);
+
+        await header.logout();
+
+        await expect(page).toHaveURL(/.*saucedemo\.com\/?$/);
+
+        // Protected page blocked if visited directly
+        await page.goto('https://www.saucedemo.com/inventory.html');
+        await expect(page).not.toHaveURL(/.*inventory\.html/);
+        await expect(page).toHaveURL(/.*saucedemo\.com\/?$/);
+    });
+
     
 });
 

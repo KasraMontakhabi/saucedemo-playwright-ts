@@ -44,5 +44,10 @@ class Header {
         await this.backToProductsButton.click();
     }
 
+    async logout() {
+        await this.openMenu();
+        await this.page.getByRole('link', { name: 'Logout' }).click();
+    }
+
 }
 export default Header;
