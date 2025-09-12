@@ -5,18 +5,7 @@ import CartPage from '../pages/CartPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import Header from '../pages/Header';
 
-const data = {
-    username: 'standard_user',
-    lockedOutUser: 'locked_out_user',
-    password: 'secret_sauce',
-    testFirstName: 'John',
-    testLastName: 'Doe',
-    testZipCode: '12345',
-    firstProductName: 'Sauce Labs Fleece Jacket',
-    secondProductName: 'Sauce Labs Backpack',
-    thirdProductName: 'Sauce Labs Onesie',
-    sortOption: 'Name (Z to A)',
-};
+const data = JSON.parse(JSON.stringify(require("../data/testData.json")));
 
 test.describe('@smoke SMOKE: Login', () => {
     test('login succeeds with standard_user', async ({ page }) => {
