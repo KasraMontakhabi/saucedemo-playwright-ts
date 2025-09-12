@@ -1,13 +1,12 @@
-[
-    {
-        "username": "standard_user",
-        "password": "secret_sauce",
-        "testFirstName": "John",
-        "testLastName": "Doe",
-        "testZipCode": "12345",
-        "firstProductName": "Sauce Labs Fleece Jacket",
-        "secondProductName": "Sauce Labs Backpack",
-        "thirdProductName": "Sauce Labs Onesie",
-        "sortOption": "Name (Z to A)"
-    }
-]
+{
+    "username": "standard_user",
+    "lockedOutUser": "locked_out_user",
+    "password": "secret_sauce",
+    "testFirstName": "John",
+    "testLastName": "Doe",
+    "testZipCode": "12345",
+    "firstProductName": "Sauce Labs Fleece Jacket",
+    "secondProductName": "Sauce Labs Backpack",
+    "thirdProductName": "Sauce Labs Onesie",
+    "sortOption": "Name (Z to A)"
+}
