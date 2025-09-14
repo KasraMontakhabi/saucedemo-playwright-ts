@@ -63,17 +63,17 @@ class CheckoutPage {
 
     async getItemTotalAmount() {
         const text = await this.itemTotalAmount.innerText();
-        return parseFloat(text.replace('$', ''));
+        return parseFloat(text.replace('Item total: $', ''));
     }
 
     async getTaxAmount() {
         const text = await this.taxAmount.innerText();
-        return parseFloat(text.replace('$', ''));
+        return parseFloat(text.replace('Tax: $', ''));
     }
 
     async getTotalAmount() {
         const text = await this.totalAmount.innerText();
-        return parseFloat(text.replace('$', ''));
+        return parseFloat(text.replace('Total: $', ''));
     }
 
     async finishCheckout() {
