@@ -79,8 +79,7 @@ test.describe('@regression REGRESSION: Inventory', () => {
     const detailName = await inventoryItemPage.getProductName();
     const detailPrice = await inventoryItemPage.getProductPrice();
 
-    expect(detailName.trim()).toBe(nameFromList.trim());
-
+    expect(detailName).toBe(nameFromList);
     expect(detailPrice).toBe(priceFromList);
 
     // back to products
