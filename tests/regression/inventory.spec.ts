@@ -4,6 +4,7 @@ import Header from '../../pages/Header';
 import InventoryPage from '../../pages/InventoryPage';
 import InventoryItemPage from '../../pages/InventoryItemPage';
 import data from '../../data/testData.json';
+import CartPage from '../../pages/CartPage';
 
 
 test.describe('@regression REGRESSION: Inventory', () => {
@@ -84,4 +85,46 @@ test.describe('@regression REGRESSION: Inventory', () => {
     await header.backToProducts();
     await expect(page).toHaveURL(/.*inventory\.html/);
   });
+
+  test('add from details page → badge increments & list button shows Remove', async ({ page }) => {
+  const header = new Header(page);
+  const inventory = new InventoryPage(page);
+  const details = new InventoryItemPage(page);
+
+  // Open details and add
+  await inventory.goToProductDetails(data.secondProductName);
+  await details.addProductToCart();
+
+  // Badge should be 1
+  expect(await header.getShoppingCartItemCount()).toBe('1');
+
+  // Back to list and verify button state is "Remove" for that product
+  await header.backToProducts();
+  const itemButton = page
+    .getByTestId('inventory-item')
+    .filter({ hasText: data.secondProductName })
+    .first()
+    .getByRole('button');
+  await expect(itemButton).toHaveText(/Remove/i);
+});
+
+
+test('cart badge persists across reload and matches items in cart page', async ({ page }) => {
+  const header = new Header(page);
+  const inventory = new InventoryPage(page);
+  const cart = new CartPage(page);
+
+  // Add two items
+  await inventory.addProductToCart(data.firstProductName);
+  await inventory.addProductToCart(data.secondProductName);
+  expect(await header.getShoppingCartItemCount()).toBe('2');
+
+  // Reload page; badge should persist
+  await page.reload();
+  expect(await header.getShoppingCartItemCount()).toBe('2');
+
+  // Go to cart and verify items count
+  await header.goToCart();
+  expect(await cart.getItemsCount()).toBe(2);
+});
 });
