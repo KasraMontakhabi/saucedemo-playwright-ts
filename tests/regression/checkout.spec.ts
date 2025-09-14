@@ -59,18 +59,15 @@ test.describe('@regression REGRESSION: Checkout summary math', () => {
   await header.goToCart();
   await cart.checkout();
 
-  // Try to continue without any info
   await checkout.continue();
   await expect(checkout.errorBanner).toBeVisible();
   await expect(checkout.errorBanner).toContainText('First Name is required');
 
-  // Provide first name only → expect another required error
   await checkout.firstNameInput.fill(data.testFirstName);
   await checkout.continue();
   await expect(checkout.errorBanner).toBeVisible();
   await expect(checkout.errorBanner).toContainText('Last Name is required');
 
-  // Provide last name only → expect postal required
   await checkout.lastNameInput.fill(data.testLastName);
   await checkout.continue();
   await expect(checkout.errorBanner).toBeVisible();
@@ -88,10 +85,8 @@ test.only('complete order shows Thank you page & Back Home returns to inventory'
   await header.goToCart();
   await cart.checkout();
 
-  // Fill info and go to overview
   await checkout.enterCheckoutInformation(data.testFirstName, data.testLastName, data.testZipCode);
 
-  // Basic sanity on payment & shipping info
   const pay = await checkout.getPaymentInfo();
   const ship = await checkout.getShippingInfo();
   expect(pay).toMatch(/Sauce\s*Card/i);        
@@ -122,11 +117,9 @@ test('removing item before checkout updates overview item total', async ({ page 
   await header.goToCart();
   await cart.removeProductFromCart(data.secondProductName);
 
-  // Proceed to checkout
   await cart.checkout();
   await checkout.enterCheckoutInformation(data.testFirstName, data.testLastName, data.testZipCode);
 
-  // Item total should now equal only the first product's price
   const itemTotal = await checkout.getItemTotalAmount();
   expect(Math.abs(itemTotal - p1)).toBeLessThan(0.01);
 });
