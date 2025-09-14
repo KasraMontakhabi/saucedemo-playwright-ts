@@ -26,7 +26,15 @@ class InventoryPage {
             .getByTestId('inventory-item-price')
             .innerText();
 
-        return text.replace('$', '').trim();
+        return parseFloat(text.replace('$', ''));
+    }
+
+    async getProductName(productName: string) {
+        return await this.products
+            .filter({ hasText: productName })
+            .first()
+            .getByTestId('inventory-item-name')
+            .innerText();
     }
 
     async removeProductFromCart(productName: string) {

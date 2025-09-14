@@ -17,7 +17,12 @@ class InventoryItemPage {
     }
 
     async getProductPrice(){
-        return await this.itemPrice.innerText();
+        return parseFloat((await this.itemPrice.innerText()).replace('$', '').trim());
     }
+    
+    async getProductName(){
+        return (await this.itemName.innerText()).trim();
+    }
+
 }
 export default InventoryItemPage;
