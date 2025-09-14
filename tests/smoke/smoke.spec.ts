@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '../pages/LoginPage';
-import InventoryPage from '../pages/InventoryPage';
-import CartPage from '../pages/CartPage';
-import CheckoutPage from '../pages/CheckoutPage';
-import Header from '../pages/Header';
-
-const data = JSON.parse(JSON.stringify(require("../data/testData.json")));
+import LoginPage from '../../pages/LoginPage';
+import InventoryPage from '../../pages/InventoryPage';
+import CartPage from '../../pages/CartPage';
+import CheckoutPage from '../../pages/CheckoutPage';
+import Header from '../../pages/Header';
+import data from '../../data/testData.json';
 
 test.describe('@smoke SMOKE: Login', () => {
     test('login succeeds with standard_user', async ({ page }) => {
