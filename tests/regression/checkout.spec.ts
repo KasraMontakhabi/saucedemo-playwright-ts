@@ -17,7 +17,7 @@ test.describe('@regression REGRESSION: Checkout summary math', () => {
     await expect(page).toHaveURL(/.*inventory\.html/);
   });
 
-  test('@tedt overview totals = sum(items) + tax', async ({ page }) => {
+  test('overview totals = sum(items) + tax', async ({ page }) => {
     const header = new Header(page);
     const inventory = new InventoryPage(page);
     const cart = new CartPage(page);
