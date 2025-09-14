@@ -49,5 +49,13 @@ class Header {
         await this.page.getByRole('link', { name: 'Logout' }).click();
     }
 
+    async resetAppState() {
+        await this.page.getByRole('link', { name: 'Reset App State' }).click();
+    }
+
+    async closeMenu() {
+        await this.page.getByRole('button', { name: 'Close Menu' }).click();
+    }
+
 }
 export default Header;
