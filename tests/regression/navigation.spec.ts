@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/LoginPage';
 import Header from '../../pages/Header';
-
-const data = JSON.parse(JSON.stringify(require('../../data/testData.json')));
+import data from '../../data/testData.json';
 
 
 test.describe('@regression REGRESSION: Navigation & About', () => {

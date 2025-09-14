@@ -3,8 +3,7 @@ import LoginPage from '../../pages/LoginPage';
 import Header from '../../pages/Header';
 import InventoryPage from '../../pages/InventoryPage';
 import CartPage from '../../pages/CartPage';
-
-const data = JSON.parse(JSON.stringify(require('../../data/testData.json')));
+import data from '../../data/testData.json';
 
 
 test.describe('@regression REGRESSION: Inventory & Cart', () => {
