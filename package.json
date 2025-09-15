@@ -7,6 +7,8 @@
     "smoke": "npx playwright test --grep @smoke"
     ,"regression:auth:bdd": "npx cucumber-js --tags=@auth  --exit"
     ,"regression:cart:bdd": "npx cucumber-js --tags=@cart  --exit"
+    ,"regression:checkout:bdd": "npx cucumber-js --tags=@checkout  --exit"
+    ,"regression:inventory:bdd": "npx cucumber-js --tags=@inventory  --exit"
 
   },
   "keywords": [],
