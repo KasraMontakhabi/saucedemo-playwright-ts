@@ -5,13 +5,35 @@
   "main": "index.js",
   "scripts": {
     "smoke": "npx playwright test --grep @smoke"
+    ,"regression": "npx playwright test --grep @regression"
+    ,"visual": "npx playwright test --grep @visual"
+    ,"accessibility": "npx playwright test --grep @a11y"
+    ,"regression:auth": "npx playwright test --grep @auth"
+    ,"regression:cart": "npx playwright test --grep @cart"
+    ,"regression:checkout": "npx playwright test --grep @checkout"
+    ,"regression:inventory": "npx playwright test --grep @inventory"
+    ,"regression:navigation": "npx playwright test --grep @navigation"
+    ,"regression:auth:bdd": "npx cucumber-js --tags=@auth  --exit"
+    ,"regression:cart:bdd": "npx cucumber-js --tags=@cart  --exit"
+    ,"regression:checkout:bdd": "npx cucumber-js --tags=@checkout  --exit"
+    ,"regression:inventory:bdd": "npx cucumber-js --tags=@inventory  --exit"
+    ,"regression:navigation:bdd": "npx cucumber-js --tags=@navigation --exit"
+    ,"smoke:bdd": "npx cucumber-js --tags=@smoke --exit"
+    ,"chromium": "npx playwright test --project=chromium"
+    ,"firefox": "npx playwright test --project=firefox"
+    ,"webkit": "npx playwright test --project=webkit"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.55.0",
-    "@types/node": "^24.3.1"
+    "@types/node": "^24.4.0",
+    "axe-core": "^4.10.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "playwright": "^1.55.0"

@@ -23,8 +23,8 @@ class CheckoutPage {
         this.postalCodeInput = page.getByPlaceholder('Zip/Postal Code');
         this.continueButton = page.getByRole('button', { name: 'Continue' });
         this.checkoutItem = page.getByTestId('cart-item');
-        this.paymentInfo = page.getByTestId('payment-information');
-        this.shippingInfo = page.getByTestId('shipping-information');
+        this.paymentInfo = page.getByTestId('payment-info-value');
+        this.shippingInfo = page.getByTestId('shipping-info-value');
         this.itemTotalAmount = page.locator('.summary_subtotal_label');
         this.taxAmount = page.locator('.summary_tax_label');
         this.totalAmount = page.locator('.summary_total_label');

@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/LoginPage';
 import Header from '../../pages/Header';
+import data from '../../data/testData.json';
 
-const data = JSON.parse(JSON.stringify(require('../../data/testData.json')));
 
-
-test.describe('@regression REGRESSION: Navigation & About', () => {
+test.describe('@regression @navigation REGRESSION: Navigation & About', () => {
   
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
