@@ -3,11 +3,6 @@ import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
 
 
-Given('I am on the login page', async function (this: CustomWorld) {
-  await this.pageObjects.login.goTo();
-});
-
-
 When(
     
   'I login with username {string} and password {string}',
@@ -48,10 +43,6 @@ When('I logout from the header menu', async function (this: CustomWorld) {
   await this.pageObjects.header.logout();
 });
 
-
-Then('I should be on the inventory page', async function (this: CustomWorld) {
-  await expect(this.page!).toHaveURL(/inventory\.html/);
-});
 
 Then('I should see an error containing {string}', async function (this: CustomWorld, text: string) {
   await this.pageObjects.login.waitForErrorVisible();
