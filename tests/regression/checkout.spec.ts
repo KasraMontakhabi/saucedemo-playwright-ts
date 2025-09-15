@@ -8,7 +8,7 @@ import data from '../../data/testData.json';
 
 
 
-test.describe('@regression REGRESSION: Checkout summary math', () => {
+test.describe('@regression @checkout REGRESSION: Checkout summary math', () => {
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();

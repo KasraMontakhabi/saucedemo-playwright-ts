@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/LoginPage';
 import Header from '../../pages/Header'; // for logout check
 
-test.describe('@regression REGRESSION: Auth & Validation', () => {
+test.describe('@regression @auth REGRESSION: Auth & Validation', () => {
   test('invalid credentials show proper error', async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();

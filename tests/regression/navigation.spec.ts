@@ -4,7 +4,7 @@ import Header from '../../pages/Header';
 import data from '../../data/testData.json';
 
 
-test.describe('@regression REGRESSION: Navigation & About', () => {
+test.describe('@regression @navigation REGRESSION: Navigation & About', () => {
   
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);

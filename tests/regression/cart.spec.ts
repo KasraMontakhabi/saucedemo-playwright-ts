@@ -4,10 +4,9 @@ import Header from '../../pages/Header';
 import InventoryPage from '../../pages/InventoryPage';
 import CartPage from '../../pages/CartPage';
 import data from '../../data/testData.json';
-import InventoryItemPage from '../../pages/InventoryItemPage';
 
 
-test.describe('@regression REGRESSION: Inventory & Cart', () => {
+test.describe('@regression @cart REGRESSION: Inventory & Cart', () => {
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();

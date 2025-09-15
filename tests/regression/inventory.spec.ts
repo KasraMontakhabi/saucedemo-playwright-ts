@@ -7,7 +7,7 @@ import data from '../../data/testData.json';
 import CartPage from '../../pages/CartPage';
 
 
-test.describe('@regression REGRESSION: Inventory', () => {
+test.describe('@regression @inventory REGRESSION: Inventory', () => {
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();
