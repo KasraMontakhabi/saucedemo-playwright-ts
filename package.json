@@ -10,6 +10,7 @@
     ,"regression:checkout:bdd": "npx cucumber-js --tags=@checkout  --exit"
     ,"regression:inventory:bdd": "npx cucumber-js --tags=@inventory  --exit"
     ,"regression:navigation:bdd": "npx cucumber-js --tags=@navigation --exit"
+    ,"smoke:bdd": "npx cucumber-js --tags=@smoke --exit"
 
   },
   "keywords": [],
