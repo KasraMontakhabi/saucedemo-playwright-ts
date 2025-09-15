@@ -6,6 +6,7 @@
   "scripts": {
     "smoke": "npx playwright test --grep @smoke"
     ,"regression:auth:bdd": "npx cucumber-js features/regression/auth/auth.feature --exit"
+    ,"regression:cart:bdd": "npx cucumber-js features/regression/cart/cart.feature --exit"
 
   },
   "keywords": [],

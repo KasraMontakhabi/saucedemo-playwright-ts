@@ -31,14 +31,3 @@ AfterStep(async function (this: CustomWorld, { result }) {
   }
 });
 
-After(async function (this: CustomWorld, { result }) {
-  // If scenario failed, attach the page URL and HTML for debugging
-  if (result?.status === Status.FAILED && this.page) {
-    this.attach(`URL at failure: ${this.page.url()}`, 'text/plain');
-    const html = await this.page.content();
-    this.attach(html, 'text/html');
-  }
-
-  await this.context?.close();
-  await this.browser?.close();
-});
