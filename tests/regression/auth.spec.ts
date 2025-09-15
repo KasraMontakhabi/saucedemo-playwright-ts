@@ -17,7 +17,7 @@ test.describe('@regression REGRESSION: Auth & Validation', () => {
     expect(await login.password.getAttribute('type')).toBe('password');
   });
 
-  test('@smoke valid login redirects to inventory', async ({ page }) => {
+  test('valid login redirects to inventory', async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();
     await login.login('standard_user', 'secret_sauce');
