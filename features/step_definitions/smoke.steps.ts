@@ -2,7 +2,6 @@ import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
 
-/* ---------- Login: smoke-only assertions ---------- */
 
 Then('I should see the shopping cart link', async function (this: CustomWorld) {
   await expect(this.page!.getByTestId('shopping-cart-link')).toBeVisible();
@@ -17,19 +16,15 @@ Then('the error dismiss button should be visible', async function (this: CustomW
   await expect(this.pageObjects.login.getErrorButton()).toBeVisible();
 });
 
-/* ---------- Cart page & contents ---------- */
-
 Then('I should be on the cart page', async function (this: CustomWorld) {
   await expect(this.page!).toHaveURL(/.*cart\.html/);
 });
 
 Then('the cart should contain {string}', async function (this: CustomWorld, productName: string) {
-  // If you already have cart.getProductInCart(name), reuse it; else do a simple contains check
   const text = await this.pageObjects.cart.getProductInCart(productName);
   expect(text).toContain(productName);
 });
 
-/* ---------- Checkout overview visibility ---------- */
 
 Then('checkout overview amounts should be visible', async function (this: CustomWorld) {
   const { checkout } = this.pageObjects;
@@ -38,7 +33,6 @@ Then('checkout overview amounts should be visible', async function (this: Custom
   await expect(checkout.totalAmount).toBeVisible();
 });
 
-/* ---------- Sorting (Name Z→A top 5) ---------- */
 
 Then('the first 5 product names should be sorted descending', async function (this: CustomWorld) {
   const names = await this.pageObjects.inventory.itemName.allInnerTexts();
@@ -50,7 +44,6 @@ Then('the first 5 product names should be sorted descending', async function (th
   expect(top5).toEqual(sortedDescTop5);
 });
 
-/* ---------- Direct navigation guard ---------- */
 
 When('I navigate directly to the inventory page', async function (this: CustomWorld) {
   await this.page!.goto('https://www.saucedemo.com/inventory.html');

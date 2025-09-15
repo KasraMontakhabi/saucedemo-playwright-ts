@@ -3,7 +3,6 @@ import { chromium, firefox, webkit, expect } from '@playwright/test';
 import type { CustomWorld } from './world';
 import { createPages } from './pages';
 
-// Choose browser via env; default chromium
 const browserName = (process.env.BROWSER || 'chromium').toLowerCase();
 const baseURL = process.env.BASE_URL || 'https://www.saucedemo.com';
 

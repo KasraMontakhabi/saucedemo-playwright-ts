@@ -74,7 +74,7 @@ test.describe('@regression @checkout REGRESSION: Checkout summary math', () => {
   await expect(checkout.errorBanner).toContainText('Postal Code is required');
 });
 
-test.only('complete order shows Thank you page & Back Home returns to inventory', async ({ page }) => {
+test('complete order shows Thank you page & Back Home returns to inventory', async ({ page }) => {
   const header = new Header(page);
   const inventory = new InventoryPage(page);
   const cart = new CartPage(page);
