@@ -52,7 +52,7 @@ test.describe('@a11y A11Y: Login', () => {
   });
 });
 
-test.describe('@a11y1 A11Y: Inventory', () => {
+test.describe('@a11y A11Y: Inventory', () => {
   test.beforeEach(async ({ page }) => {
     const login = new LoginPage(page);
     await login.goTo();
